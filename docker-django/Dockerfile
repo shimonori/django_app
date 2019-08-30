@@ -3,7 +3,7 @@ RUN apt-get -y update \
     && apt-get -y upgrade \
     && apt-get install -y locales curl python3-distutils \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    $$ python3 get-pip.py \
+    && python3 get-pip.py \
     && pip install -U pip \
     && mkdir /code \
     && rm -rf /var/lib/apt/lists/* \
