@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'try/css/style.css' %}" />
+</head>
+<body>
+    <h1>{{h1}}</h1>
+    <table>
+    <form action="{% url 'notLogin' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <tr><td></td><td><input type="submit" value="送信"></td></tr>
+    </form>
+    </table>
+</body> 
