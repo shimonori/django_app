@@ -1,0 +1,13 @@
+body {
+    color: gray;
+    font-seize:16pt;
+}
+h1{
+    color:red;
+    opacity:0.2;
+    font-size: 60pt;
+    margin-top: -20px;
+    margin-bottom: 0px;
+    text-align: right;
+}
+
