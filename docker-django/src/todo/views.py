@@ -3,14 +3,13 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from  .forms import LoginForm
 from  .forms import notLoginForm
+from django.contrib.auth.decorators import login_required
 import subprocess
 
 
-# Create your views here.
 
 
-
-
+# @login_required
 class IndexView(TemplateView):
 
     def __init__(self):
@@ -27,6 +26,7 @@ class IndexView(TemplateView):
 
         return render(request, 'try_app/index.html', self.params)
 
+# @login_required
 class notLoginView(TemplateView):
 
     def __init__(self):
