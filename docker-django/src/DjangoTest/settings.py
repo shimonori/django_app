@@ -37,12 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todo',
+    # 'todo',
+    'todo.apps.TodoConfig',
     'accounts.apps.AccountsConfig',
-    # 'django.contrib.sites',
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -128,10 +125,4 @@ STATIC_URL = '/static/'
 # Add
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/todo'
-# ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = '8index103000@gmail.com'
-# EMAIL_HOST_PASSWORD = '123456789main'
-# EMAIL_USE_TLS = True

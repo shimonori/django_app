@@ -1,9 +1,8 @@
 from django.urls import path
-from .views import IndexView
-from .views import notLoginView
+from . import views
 
+app_name = 'todo'
 urlpatterns = [
-    path('', IndexView.as_view(), name='Index'),
-    path('notlogin/', notLoginView.as_view(),name='notLogin'),
-    path('notloginmail/', notLoginView.as_view(),name='notLoginMail'),
+    path('', views.MonthCalendar.as_view(), name='month'),
+    path('month/<int:year>/<int:month>/', views.MonthCalendar.as_view(), name='month'),
 ]

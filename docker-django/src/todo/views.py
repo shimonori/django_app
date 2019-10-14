@@ -1,50 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView
-from  .forms import LoginForm
-from  .forms import notLoginForm
+from django.views import generic
 from django.contrib.auth.decorators import login_required
 import subprocess
 
+from . import mixins
 
 
 
-# @login_required
-class IndexView(TemplateView):
 
-    def __init__(self):
-        self.params = {
-        'title': 'ログインしてください',
-        'form': LoginForm(),
-        }
-    
-    def get(self, request):
-        return render(request, 'try_app/index.html', self.params)
+class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
+    template_name = 'todo/month.html'
 
-    def post(self, request):
-        print("post")
-
-        return render(request, 'try_app/index.html', self.params)
-
-# @login_required
-class notLoginView(TemplateView):
-
-    def __init__(self):
-        self.params = {
-        'title': 'パスワードリセット',
-        'h1': '登録したメールアドレスを入力してください',
-        'form': notLoginForm(),
-        }
-
-    def get(self, request):
-        return render(request, 'try_app/notLogin.html', self.params)
-
-    def post(self, request):
-        self.params = {
-            'title': 'パスワードリセット',
-            'p': '登録されたメールアドレスにリセット用のメールを送信いたしました。',
-        }
-        cmd = "python try_app/mail/mail_smtp.py " + request.POST['mail']
-        print(cmd)
-        subprocess.call(cmd.split())
-        return render(request, 'try_app/sendmail_complete.html', self.params)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_month_calendar()
+        context.update(calendar_context)
+        return context
