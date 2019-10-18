@@ -27,4 +27,7 @@ urlpatterns = [
 
     # todo url
     path('todo/',include('todo.urls')),
+
+    # Life url
+    path('Life/', include('Life.urls')),
 ]
